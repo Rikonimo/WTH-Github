@@ -50,12 +50,6 @@ COPY --from=builder /app/src/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Install MongoDB
-RUN apt-get update && apt-get install -y mongodb
-
-# Verify that MongoDB has been installed correctly
-RUN mongod --version
-
 USER nextjs
 
 EXPOSE 3000
